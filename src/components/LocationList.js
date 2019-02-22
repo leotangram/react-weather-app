@@ -16,7 +16,7 @@ const LocationList = ({ cities, onSelectedLocation }) => {
         onWeatherLocationClick={() => handleWeatherLocationClick(city)}
       />
     ))
-  return <div className="locationsList">{strToComponents(cities)}</div>
+  return <div className="locationList">{strToComponents(cities)}</div>
 }
 
 LocationList.propTypes = {
