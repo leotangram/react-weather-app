@@ -29,8 +29,18 @@ class ForecastExtended extends Component {
   }
 
   componentDidMount() {
-    // Fetch or Axios
-    const url_forecast = `${url}?q=${this.props.city}&appid=${api_key}`
+    this.updateCity(this.props.city)
+  }
+
+  componentDidUpdate = (prevProps, prevState) => {
+    if (prevProps.city !== this.props.city) {
+      this.setState({ forecastData: null })
+      this.updateCity(this.props.city)
+    }
+  }
+
+  updateCity = city => {
+    const url_forecast = `${url}?q=${city}&appid=${api_key}`
 
     fetch(url_forecast)
       .then(data => data.json())
